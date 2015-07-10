@@ -1,19 +1,18 @@
 # Kaiwa
 
 Kaiwa is an open source web client for XMPP.  
-Kaiwa is a fork of Otalk, a prototype application created by &yet (https://github.com/otalk for more code).
+Kaiwa is a fork of Otalk, a prototype application created by &yet (https://github.com/otalk for more code). nsg/kaiwa is a fork from digicoop/kaiwa that focus on Docker.
 
 ![Screenshot](http://getkaiwa.com/assets/img/header.png)
 
 ## Installing
 
-    git clone https://github.com/digicoop/kaiwa.git
+    git clone https://github.com/nsg/kaiwa.git
     cd kaiwa
-    sudo apt-get install libldap2-dev uuid-dev
-    npm install
-    node server
+	docker build -t kaiwa .
+	docker run -tip 8000:8000 kaiwa
 
-You will need an XMPP server to use Kaiwa. We provide one at [Kaiwa server](https://github.com/digicoop/kaiwa-server).
+You will need an XMPP server to use Kaiwa. Digicoop provide one at [Kaiwa server](https://github.com/digicoop/kaiwa-server).
 
 *Note:* If you're running your own XMPP server, and aren't using something like HAProxy to terminate SSL, then you might get errors in certain browsers trying to establish a WebSocket connection because the XMPP server is requesting an optional client certificate which makes the browser terminate the socket. To resolve that, visit the XMPP over Websocket URL directly (eg, example.com:5281/xmpp-websocket for Prosody) so that a client cert choice can be made. After that, the Kaiwa client should connect fine.
 
